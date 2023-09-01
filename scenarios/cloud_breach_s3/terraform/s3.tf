@@ -57,7 +57,9 @@ resource "aws_s3_object" "goat" {
   }
 }
 
-resource "aws_s3_bucket_acl" "cardholder-data-bucket-acl" {
+resource "aws_s3_bucket_ownership_controls" "cardholder-data-bucket-acl" {
   bucket = aws_s3_bucket.cg-cardholder-data-bucket.id
-  acl    = "private"
+  rule {
+  object_ownership = "ObjectWriter"
+}
 }
