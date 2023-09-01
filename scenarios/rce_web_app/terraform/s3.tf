@@ -58,7 +58,7 @@ resource "aws_s3_bucket" "cg-keystore-s3-bucket" {
 }
 
 #S3 Bucket Objects
-resource "aws_s3_bucket_object" "cg-lb-log-file" {
+resource "aws_s3_object" "cg-lb-log-file" {
   bucket = "${aws_s3_bucket.cg-logs-s3-bucket.id}"
   key = "cg-lb-logs/AWSLogs/${data.aws_caller_identity.aws-account-id.account_id}/elasticloadbalancing/${var.region}/2019/06/19/555555555555_elasticloadbalancing_us-east-1_app.cg-lb-cgidp347lhz47g.d36d4f13b73c2fe7_20190618T2140Z_10.10.10.100_5m9btchz.log"
   source = "../assets/555555555555_elasticloadbalancing_us-east-1_app.cg-lb-cgidp347lhz47g.d36d4f13b73c2fe7_20190618T2140Z_10.10.10.100_5m9btchz.log"
@@ -68,7 +68,7 @@ resource "aws_s3_bucket_object" "cg-lb-log-file" {
     Scenario = "${var.scenario-name}"
   }
 }
-resource "aws_s3_bucket_object" "cg-db-credentials-file" {
+resource "aws_s3_object" "cg-db-credentials-file" {
   bucket = "${aws_s3_bucket.cg-secret-s3-bucket.id}"
   key = "db.txt"
   source = "../assets/db.txt"
@@ -78,7 +78,7 @@ resource "aws_s3_bucket_object" "cg-db-credentials-file" {
     Scenario = "${var.scenario-name}"
   }
 }
-resource "aws_s3_bucket_object" "cg-ssh-private-key-file" {
+resource "aws_s3_object" "cg-ssh-private-key-file" {
   bucket = "${aws_s3_bucket.cg-keystore-s3-bucket.id}"
   key = "cloudgoat"
   source = "${var.ssh-private-key-for-ec2}"
@@ -88,7 +88,7 @@ resource "aws_s3_bucket_object" "cg-ssh-private-key-file" {
     Scenario = "${var.scenario-name}"
   }
 }
-resource "aws_s3_bucket_object" "cg-ssh-public-key-file" {
+resource "aws_s3_object" "cg-ssh-public-key-file" {
   bucket = "${aws_s3_bucket.cg-keystore-s3-bucket.id}"
   key = "cloudgoat.pub"
   source = "${var.ssh-public-key-for-ec2}"
@@ -99,17 +99,23 @@ resource "aws_s3_bucket_object" "cg-ssh-public-key-file" {
   }
 }
 
-resource "aws_s3_bucket_acl" "logs-s3-bucket-acl" {
+resource "aws_s3_bucket_ownership_controls" "logs-s3-bucket-acl" {
   bucket = aws_s3_bucket.cg-logs-s3-bucket.id
-  acl    = "private"
+  rule {
+  object_ownership = "ObjectWriter"
+}
 }
 
-resource "aws_s3_bucket_acl" "secret-s3-bucket-acl" {
+resource "aws_s3_bucket_ownership_controls" "secret-s3-bucket-acl" {
   bucket = aws_s3_bucket.cg-secret-s3-bucket.id
-  acl    = "private"
+  rule {
+  object_ownership = "ObjectWriter"
+}
 }
 
-resource "aws_s3_bucket_acl" "keystore-s3-bucket-acl" {
+resource "aws_s3_bucket_ownership_controls" "keystore-s3-bucket-acl" {
   bucket = aws_s3_bucket.cg-keystore-s3-bucket.id
-  acl    = "private"
+  rule {
+  object_ownership = "ObjectWriter"
+}
 }
