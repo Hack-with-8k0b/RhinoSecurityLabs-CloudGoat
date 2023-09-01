@@ -10,6 +10,8 @@
 
 `aws ec2 describe-instances --profile mcduck --region us-east-1`
 
+`Look for machine with KeyName of cg-ec2-key-pair-rce_web_app and note down the Public IP Address`
+
 `chmod 400 cloudgoat`
 
 `ssh -i cloudgoat ubuntu@<ec2_public_ip>
