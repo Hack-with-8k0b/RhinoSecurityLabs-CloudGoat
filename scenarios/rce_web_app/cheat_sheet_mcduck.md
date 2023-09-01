@@ -1,18 +1,18 @@
-`aws configure --profile McDuck`
+`aws configure --profile mcduck`
 
-`aws s3 ls --profile McDuck`
+`aws s3 ls --profile mcduck`
 
-`aws s3 ls s3://<bucket> --recursive --profile McDuck`
+`aws s3 ls s3://<bucket> --recursive --profile mcduck`
 
-`aws s3 cp s3://cg-keystore-s3-bucket-cgid6prrnaix1v/cloudgoat . --profile McDuck`
+`aws s3 cp s3://cg-keystore-s3-bucket-cgid6prrnaix1v/cloudgoat . --profile mcduck`
 
-`aws s3 cp s3://cg-keystore-s3-bucket-cgid6prrnaix1v/cloudgoat.pub . --profile McDuck`
+`aws s3 cp s3://cg-keystore-s3-bucket-cgid6prrnaix1v/cloudgoat.pub . --profile mcduck`
 
-`aws ec2 describe-instances --profile McDuck`
+`aws ec2 describe-instances --profile mcduck --region us-east-1`
 
 `chmod 400 cloudgoat`
 
-`ssh -i cloudgoat ubuntu@<ec2_ip>
+`ssh -i cloudgoat ubuntu@<ec2_public_ip>
 
 `sudo apt-get install awscli`
 
