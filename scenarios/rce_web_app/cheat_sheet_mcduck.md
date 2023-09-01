@@ -28,6 +28,8 @@
 
 `aws rds describe-db-instances --region us-east-1`
 
+`Look for Address ending with us-east-1.rds.amazonaws.com`
+
 `psql postgresql://cgadmin:Purplepwny2029@<rds-instance>:5432/cloudgoat`
 
 `\dt`
