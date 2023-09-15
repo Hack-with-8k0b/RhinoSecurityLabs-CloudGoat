@@ -36,6 +36,7 @@ jobs:
 
   IAC_Scan:
   
+    needs: Secret-Scanning
     runs-on: ubuntu-latest
     
     steps:
