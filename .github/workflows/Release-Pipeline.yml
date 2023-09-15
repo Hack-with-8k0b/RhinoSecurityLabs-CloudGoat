@@ -1,4 +1,4 @@
-name: iac-scan
+name: Release-Pipeline
 
 on:
   workflow_dispatch:
