@@ -1,4 +1,4 @@
-name: container-scan-trivy
+name: iac-scan
 
 on:
   workflow_dispatch:
