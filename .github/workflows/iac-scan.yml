@@ -16,7 +16,7 @@ jobs:
       - name: Dumping Source Code
         uses: actions/checkout@v3
 
-#~~~~~~~~~~ Running Dependency Scan ~~~~~~~~~~
+#~~~~~~~~~~ Running Secret Scan ~~~~~~~~~~
         
       - name: Secret Scaaning
         uses: ShiftLeftSecurity/scan-action@master
