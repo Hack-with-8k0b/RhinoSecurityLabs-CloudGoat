@@ -1,4 +1,4 @@
-ame: Build-Pipeline
+name: Build-Pipeline
 
 on:
   workflow_dispatch:
